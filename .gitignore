@@ -1,0 +1,9 @@
+.DS_Store
+
+oth/
+
+src/zsh/scripts/vpn.zsh
+src/zsh/scripts/helpers.zsh
+
+src/nvim/plugged
+src/nvim/undodir

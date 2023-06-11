@@ -1,0 +1,62 @@
+#!/bin/zsh
+
+COLOR_WHITE='\033[0;37m'
+COLOR_B_PURPLE='\033[1;35m'
+COLOR_DEFAULT='\033[0m'
+
+function logger {
+    echo -e "${COLOR_B_PURPLE}[dotfiles]:${COLOR_WHITE} $1${COLOR_DEFAULT}"
+}
+
+if [[ ! -f ~/.local/share/nvim/site/autoload/plug.vim ]]
+then
+    logger "Installing vim-plug (nvim)"
+    sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+fi
+
+
+logger "ZSH"
+mkdir -p $HOME/.zsh
+logger "Creating \$HOME/.config dir"
+mkdir -p $HOME/.config
+
+logger "Creating .zsh-scripts symlinks"
+ln -sf $(pwd)/src/zsh/scripts $HOME/.zsh/
+
+logger "Creating .zshrc symlink"
+ln -sf $(pwd)/src/zsh/.zshrc $HOME/
+source $HOME/.zshrc
+
+logger "Installing oh-my-zsh"
+sh -c "$(wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
+logger "Creating symlinks for custom oh-my-zsh themes"
+ln -sf $(pwd)/src/zsh/themes/custom.zsh-theme $ZSH/custom/themes/
+
+
+logger "VIM"
+logger "Creating symlinks for nvim"
+ln -sf $(pwd)/src/nvim $HOME/.config/
+
+logger "Creating vim undo-dir"
+mkdir -p $HOME/.vim/undo-dir
+
+
+logger "TMUX"
+logger "Creating symsymlinks for tmux"
+ln -sf $(pwd)/src/tmux $HOME/.config/
+
+logger "Done"
+
+
+# logger "Installing bat..."
+#brew install bat
+#sudo apt-get install bat
+
+# logger "Installing fzf..."
+#brew install fzf
+#sudo apt-get install fzf
+
+# logger "Installing ripgrep..."
+#brew install ripgrep
+#sudo apt-get install ripgrep
