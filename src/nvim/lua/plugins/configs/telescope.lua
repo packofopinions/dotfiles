@@ -2,11 +2,14 @@
 
 require('telescope').setup({
     defaults = {
-        layout_strategy = 'horizontal',
+        layout_strategy = 'vertical',
         layout_config = {
             height = 100,
-            width = 0.9,
+            width = 0.99,
         },
+        file_ignore_patterns = {
+            "node_modules"
+        }
     },
     extensions = {
         fzf = {

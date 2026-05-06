@@ -21,7 +21,7 @@ if [[ -n "$ITERM_SESSION_ID" ]]; then
     }
 
     function iterm2_tab_preexec() {
-        if [[ "$1" =~ "^ssh " ]]; then
+        if [[ "$1" =~ "^ssh " ]] || [[ "$1" =~ "^mosh " ]]; then
             if [[ "$1" =~ "prod" ]]; then
                 tab-red
             elif [[ "$1" =~ "stage" ]]; then

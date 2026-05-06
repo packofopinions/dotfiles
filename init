@@ -16,16 +16,18 @@ then
 fi
 
 
-logger "ZSH"
-mkdir -p $HOME/.zsh
 logger "Creating \$HOME/.config dir"
 mkdir -p $HOME/.config
+
+
+logger "ZSH"
+mkdir -p $HOME/.zsh
 
 logger "Creating .zsh-scripts symlinks"
 ln -sf $(pwd)/src/zsh/scripts $HOME/.zsh/
 
 logger "Creating .zshrc symlink"
-ln -sf $(pwd)/src/zsh/.zshrc $HOME/
+ln -sf $(pwd)/src/zsh/.zshrc $HOME/.zsh/
 source $HOME/.zshrc
 
 logger "Installing oh-my-zsh"
@@ -60,3 +62,6 @@ logger "Done"
 # logger "Installing ripgrep..."
 #brew install ripgrep
 #sudo apt-get install ripgrep
+
+# logger "Installing rust..."
+# brew install rust
