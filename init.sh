@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/sh
 
 COLOR_WHITE='\033[0;37m'
 COLOR_B_PURPLE='\033[1;35m'
@@ -28,7 +28,7 @@ ln -sf $(pwd)/src/zsh/scripts $HOME/.zsh/
 
 logger "Creating .zshrc symlink"
 ln -sf $(pwd)/src/zsh/.zshrc $HOME/.zsh/
-source $HOME/.zshrc
+source $HOME/.zsh/.zshrc
 
 logger "Installing oh-my-zsh"
 sh -c "$(wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
