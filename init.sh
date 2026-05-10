@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/zsh
 
 COLOR_WHITE='\033[0;37m'
 COLOR_B_PURPLE='\033[1;35m'
@@ -25,9 +25,6 @@ mkdir -p $HOME/.zsh
 
 logger "Creating .zsh-scripts symlinks"
 ln -sf $(pwd)/src/zsh/scripts $HOME/.zsh/
-
-logger "Creating .zshrc symlink"
-ln -sf $(pwd)/src/zsh/.zshrc $HOME/.zsh/
 source $HOME/.zsh/.zshrc
 
 logger "Installing oh-my-zsh"
